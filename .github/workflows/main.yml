@@ -24,7 +24,7 @@ jobs:
       - name: Upload site from DEMO folder
         uses: actions/upload-pages-artifact@v3  # ✅ Use latest version
         with:
-          path: DEMO
+          path: demo
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v4  # ✅ Updated version
