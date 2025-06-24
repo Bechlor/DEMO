@@ -3,10 +3,12 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches:
-      - main  # or 'master', depending on your default branch
+      - main  # change to 'master' if that's your default branch
 
 permissions:
-  contents: write  # needed to push to gh-pages branch
+  contents: write
+  pages: write
+  id-token: write
 
 jobs:
   deploy:
@@ -16,10 +18,13 @@ jobs:
       - name: Checkout source code
         uses: actions/checkout@v4
 
-      - name: Setup Pages
+      - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
+
+      - name: Upload site from DEMO/ folder
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: DEMO  # this is where your index.html is located
+          path: DEMO  # this must match the folder that contains index.html
 
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
